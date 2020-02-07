@@ -6,7 +6,7 @@ route.get('/news', (req, res) =>{
     axios.get('https://newsapi.org/v2/top-headlines', {
         params: {
             country: 'us',
-            apiKey: process.env.API_KEY
+            apiKey: req.params.apiKey
         }
     })
      .then(response => {
@@ -28,8 +28,8 @@ route.get('/news', (req, res) =>{
 });
 
 
-route.get('/news/search/', (req, res) =>{
-    axios.get(`https://newsapi.org/v2/top-headlines?q=${req.query.q}&language=en&apiKey=${process.env.API_KEY}`)
+route.get('/news/search/:token', (req, res) =>{
+    axios.get(`https://newsapi.org/v2/top-headlines?q=${req.query.q}&language=en&apiKey=${req.params.apiKey}`)
         .then(response => {
             let result = response.data.articles.map(article => ({
                 author: article.author,
