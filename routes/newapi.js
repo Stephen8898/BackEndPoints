@@ -28,7 +28,7 @@ route.get('/news', (req, res) =>{
 });
 
 
-route.get('/news/search/:token', (req, res) =>{
+route.get('/news/search/:apiKey', (req, res) =>{
     axios.get(`https://newsapi.org/v2/top-headlines?q=${req.query.q}&language=en&apiKey=${req.params.apiKey}`)
         .then(response => {
             let result = response.data.articles.map(article => ({
