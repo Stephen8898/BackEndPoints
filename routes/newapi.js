@@ -2,7 +2,7 @@ const express = require('express');
 const route = express.Router();
 const axios = require('axios');
 
-route.get('/news', (req, res) =>{ 
+route.get('/news/:apiKey', (req, res) =>{ 
     axios.get('https://newsapi.org/v2/top-headlines', {
         params: {
             country: 'us',
