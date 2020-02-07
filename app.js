@@ -17,7 +17,9 @@ mongoose.connect(config.database, {
   useFindAndModify: false
 });
 
-mongoose.connection.on("connected");
+mongoose.connection.on("connected", () =>{
+  console.log("Mongo on!");
+});
 
 //Enviromental var
 dotenv.config();
