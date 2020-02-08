@@ -27,7 +27,7 @@ dotenv.config();
 // app.use(express.static(path.join(_dirname, "client/build")));
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
-// app.use(cors());
+app.use(cors());
 
 //routes
 app.use("/api", news);
