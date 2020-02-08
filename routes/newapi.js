@@ -2,11 +2,11 @@ const express = require('express');
 const route = express.Router();
 const axios = require('axios');
 
-route.get('/news/:apiKey', (req, res) =>{ 
+route.get('/news', (req, res) =>{ 
     axios.get('https://newsapi.org/v2/top-headlines', {
         params: {
             country: 'us',
-            apiKey: req.params.apiKey
+            apiKey: process.env.API_KEY
         }
     })
      .then(response => {
@@ -28,8 +28,8 @@ route.get('/news/:apiKey', (req, res) =>{
 });
 
 
-route.get('/news/search/:apiKey', (req, res) =>{
-    axios.get(`https://newsapi.org/v2/top-headlines?q=${req.query.q}&language=en&apiKey=${req.params.apiKey}`)
+route.get('/news/search/', (req, res) =>{
+    axios.get(`https://newsapi.org/v2/top-headlines?q=${req.query.q}&language=en&apiKey=${process.env.API_KEY}`)
         .then(response => {
             let result = response.data.articles.map(article => ({
                 author: article.author,
